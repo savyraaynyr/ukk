@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2024 at 09:53 AM
+-- Generation Time: Nov 25, 2024 at 02:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,6 +36,14 @@ CREATE TABLE `agendas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `agendas`
+--
+
+INSERT INTO `agendas` (`id`, `title`, `description`, `event_date`, `created_at`, `updated_at`) VALUES
+(1, 'Kegiatan Pra-Uji Kompetensi Keahlian Jurusan Teknik Otomotif', 'Kegiatan Pra-Uji Kompetensi Keahlian Jurusan Teknik Otomotif. Kegiatan ini dilaksanakan di Bengkel Teknik Otomotiff', '2024-11-07 00:00:00', '2024-11-17 00:07:18', '2024-11-22 19:56:09'),
+(2, 'ujikom', 'ujian', '2024-11-23 00:00:00', '2024-11-21 17:58:43', '2024-11-21 17:58:43');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +58,15 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `photo_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
+(2, 11, 3, '!!!', '2024-11-21 14:34:07', '2024-11-21 14:34:07'),
+(3, 11, 3, '\'\'\'\'', '2024-11-21 14:34:27', '2024-11-21 14:34:27'),
+(4, 11, 1, 'xixixi', '2024-11-21 14:36:00', '2024-11-21 14:36:00');
 
 -- --------------------------------------------------------
 
@@ -81,6 +98,13 @@ CREATE TABLE `galleries` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `title`, `user_id`, `created_at`, `updated_at`) VALUES
+(4, 'JURUSAN', 1, '2024-11-20 09:26:37', '2024-11-20 09:26:37');
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +118,14 @@ CREATE TABLE `infos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `infos`
+--
+
+INSERT INTO `infos` (`id`, `title`, `content`, `created_at`, `updated_at`) VALUES
+(1, 'Pentas Seni Peserta LDKS', 'Kegiatan Pentas Seni peserta LDKS yang dilaksanakan di lapangan SMK Negeri 4 Bogor pada hari Kamis, 22 Agustus 2024', '2024-11-17 00:05:12', '2024-11-17 00:05:12'),
+(2, 'upacara', 'hari senin', '2024-11-21 17:57:59', '2024-11-21 17:57:59');
 
 -- --------------------------------------------------------
 
@@ -122,8 +154,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2024_09_22_123619_create_info_table', 1),
 (9, '2024_09_22_123636_create_agendas_table', 1),
 (10, '2024_09_28_084839_add_title_and_description_to_photos_table', 1),
-(11, '2024_09_28_085511_remove_description_from_galleries_table', 1),
-(12, '2024_09_29_060802_create_profiles_table', 1);
+(11, '2024_09_28_085511_remove_description_from_galleries_table', 1);
 
 -- --------------------------------------------------------
 
@@ -171,21 +202,14 @@ CREATE TABLE `photos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `profiles`
+-- Dumping data for table `photos`
 --
 
-CREATE TABLE `profiles` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `class` varchar(255) DEFAULT NULL,
-  `birthdate` date DEFAULT NULL,
-  `bio` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `photos` (`id`, `title`, `description`, `image_url`, `gallery_id`, `created_at`, `updated_at`) VALUES
+(8, '1', 'TFLM', 'https://smkn4bogor.sch.id/assets/images/logo/tflm.jpeg', 4, '2024-11-20 09:27:28', '2024-11-20 09:27:28'),
+(9, '2', 'PPLG', 'https://smkn4bogor.sch.id/assets/images/logo/pplg.png', 4, '2024-11-20 09:27:53', '2024-11-20 09:27:53'),
+(11, '4', 'TKR', 'https://smkn4bogor.sch.id/assets/images/logo/tkr.png', 4, '2024-11-20 09:28:46', '2024-11-20 09:28:46');
 
 -- --------------------------------------------------------
 
@@ -204,6 +228,15 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$QW1LtgIgMQN9YCtK8tLL9u7KQD/2cHYdxMztmhYIW6uPnzRUeDSra', 'admin', NULL, '2024-11-16 23:56:50', '2024-11-16 23:56:50'),
+(2, 'savyraa', 'sa@gmail.com', NULL, '$2y$10$0ZcSsG8mJd1I10GjM7rdwuv3I8Q1cW8bGtvCQUtYr6kRJFMp5PFgK', 'user', NULL, '2024-11-20 08:53:11', '2024-11-20 08:53:11'),
+(3, 'savyra', 'sv@gmail.com', NULL, '$2y$10$nU08YwHg6UvlCuVB.5vab.he7H.1ycS0LtJQzsyoeP7pW6097rl4a', 'user', NULL, '2024-11-21 14:33:18', '2024-11-21 14:33:18');
 
 --
 -- Indexes for dumped tables
@@ -271,13 +304,6 @@ ALTER TABLE `photos`
   ADD KEY `photos_gallery_id_foreign` (`gallery_id`);
 
 --
--- Indexes for table `profiles`
---
-ALTER TABLE `profiles`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `profiles_user_id_foreign` (`user_id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -292,13 +318,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `agendas`
 --
 ALTER TABLE `agendas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -310,19 +336,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `infos`
 --
 ALTER TABLE `infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -334,19 +360,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `profiles`
---
-ALTER TABLE `profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -370,12 +390,6 @@ ALTER TABLE `galleries`
 --
 ALTER TABLE `photos`
   ADD CONSTRAINT `photos_gallery_id_foreign` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `profiles`
---
-ALTER TABLE `profiles`
-  ADD CONSTRAINT `profiles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
